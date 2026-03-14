@@ -13,14 +13,12 @@ class ContentViewModel {
     var tasks: [TaskModel] = []
 
     func addTask(title: String) {
-        let task = TaskModel(title: title, isDone: false)
-        tasks.append(task)
+        let newTask = TaskModel(title: title, isDone: false)
+        tasks.append(newTask)
     }
 
-    func deleteTask(at offsets: IndexSet, isDone: Bool) {
-        if isDone {
-            tasks.remove(atOffsets: offsets)
-        }
+    func deleteTask(id: UUID) {
+        tasks.removeAll { $0.id == id }
     }
 
 }
